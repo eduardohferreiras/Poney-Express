@@ -12,7 +12,7 @@ class Score():
     level = 1
 
     def __init__(self):
-        self.image = pygame.Surface((150, 250))
+        self.image = pygame.Surface((200, 250))
         self.image.fill(white)
         self.rect = self.image.get_rect()
         self.rect.x = 850

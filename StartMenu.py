@@ -22,14 +22,14 @@ def StartMenu():
                 isInStartMenu = False
             elif event.type == KEYDOWN:
                 if event.key == K_ESCAPE:
-                    isInStartMenu = False
+                    pygame.quit()
+                    quit()
+                elif event.key == K_RETURN:
+                    isInStartMenu = False;
 
         gameDisplay.fill((0,0,0))
         gameDisplay.blit(startMenuImg ,(0,0))
         pygame.display.update()
         clock.tick(60)
 
-    pygame.quit()
-    quit()
 
-StartMenu()

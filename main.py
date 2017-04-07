@@ -2,6 +2,7 @@ import pygame
 import Fork
 import Score
 from pygame.locals import *
+import StartMenu
 
 pygame.init()
 
@@ -34,6 +35,12 @@ class Background(pygame.sprite.Sprite):
 #BackGround = Background('Nevada_Desert3.jpg', [0,0])
 
 # Game starts
+
+
+StartMenu.StartMenu()
+
+
+
 gameExit = False
 
 while not gameExit:

@@ -3,6 +3,7 @@ import Fork
 import Score
 from pygame.locals import *
 import StartMenu
+import Player
 
 pygame.init()
 
@@ -20,9 +21,9 @@ black = (0, 0, 0)
 red = (255, 0, 0)
 
 
-
-fork = Fork.Fork()
+fork = Fork.Fork(600, 700)
 score = Score.Score()
+player = Player.Player()
 
 class Background(pygame.sprite.Sprite):
     def __init__(self, image_file, location):
@@ -57,11 +58,12 @@ while not gameExit:
 
     # Updates
     score.update(gameDisplay)
-
     pygame.display.update()
     gameDisplay.fill([255, 255, 255])
+    player.movePlayer(fork)
     #gameDisplay.blit(BackGround.image, BackGround.rect)
     gameDisplay.blit(fork.image, fork.rect)
+    gameDisplay.blit(player.image, player.rect)
 
 
 pygame.quit()

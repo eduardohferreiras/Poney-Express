@@ -1,4 +1,5 @@
 import pygame
+from pygame.locals import *
 
 pygame.init()
 
@@ -19,6 +20,9 @@ def StartMenu():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 isInStartMenu = False
+            elif event.type == KEYDOWN:
+                if event.key == K_ESCAPE:
+                    isInStartMenu = False
 
         gameDisplay.fill((0,0,0))
         gameDisplay.blit(startMenuImg ,(0,0))

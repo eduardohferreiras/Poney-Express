@@ -1,6 +1,7 @@
 import pygame
 import Fork
 import Score
+from pygame.locals import *
 
 pygame.init()
 
@@ -42,6 +43,10 @@ while not gameExit:
             gameExit = True
         if event.type == pygame.MOUSEBUTTONUP:
             fork.toggle()
+        if event.type == KEYDOWN:
+            if event.key == K_ESCAPE:
+                gameExit = True
+
 
     # Updates
     score.update(gameDisplay)

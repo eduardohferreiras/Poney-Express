@@ -1,5 +1,6 @@
 import pygame
 import Fork
+import Score
 
 pygame.init()
 
@@ -17,6 +18,7 @@ red = (255, 0, 0)
 
 
 fork = Fork.Fork()
+score = Score.Score()
 
 class Background(pygame.sprite.Sprite):
     def __init__(self, image_file, location):
@@ -42,10 +44,12 @@ while not gameExit:
             else:
                 fork.rect.y -= 10;
 
-    # Where we print stuff on screen
+    # Updates
+    score.update(gameDisplay)
+
     pygame.display.update()
     gameDisplay.fill([255, 255, 255])
-#    gameDisplay.blit(BackGround.image, BackGround.rect)
+    #gameDisplay.blit(BackGround.image, BackGround.rect)
     gameDisplay.blit(fork.image, fork.rect)
 
 

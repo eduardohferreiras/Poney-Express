@@ -6,7 +6,9 @@ pygame.init()
 
 
 # Canvas
-gameDisplay = pygame.display.set_mode((1024,671))
+displayHeight = 1080
+displayWidth = 1920
+gameDisplay= pygame.display.set_mode((displayWidth,displayHeight),pygame.FULLSCREEN)
 pygame.display.set_caption('Pony Express')
 
 

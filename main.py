@@ -39,10 +39,7 @@ while not gameExit:
         if event.type == pygame.QUIT:
             gameExit = True
         if event.type == pygame.MOUSEBUTTONUP:
-            if fork.rect.y == 100:
-                fork.rect.y += 10
-            else:
-                fork.rect.y -= 10;
+            fork.toggle()
 
     # Updates
     score.update(gameDisplay)

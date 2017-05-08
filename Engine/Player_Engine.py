@@ -11,8 +11,8 @@ class Player():
 
     def movePlayer(self, fork):
         if self.rect.x < 1700:
-            self.rect.x += 10
-        if fork.rect.x >= (self.rect.x - 5) and fork.rect.x <= (self.rect.x + 5):
+            self.rect.x += 1
+        if fork.rect.x >= (self.rect.x - 5) and fork.rect.x <= (self.rect.x):
             fork.canToggle = False
             if fork.switch == True:
                 self.rect.y += 135

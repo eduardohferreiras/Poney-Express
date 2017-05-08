@@ -1,9 +1,8 @@
 import pygame
-import Fork
-import Score
 from pygame.locals import *
-import StartMenu
-import Player
+
+from Engine import Player_Engine, Fork_Engine, Score_Engine
+from UIElements import Start_Menu
 
 pygame.init()
 
@@ -21,9 +20,9 @@ black = (0, 0, 0)
 red = (255, 0, 0)
 
 
-fork = Fork.Fork(600, 700)
-score = Score.Score()
-player = Player.Player()
+fork = Fork_Engine.Fork(600, 700)
+score = Score_Engine.Score()
+player = Player_Engine.Player()
 
 class Background(pygame.sprite.Sprite):
     def __init__(self, image_file, location):
@@ -38,7 +37,7 @@ class Background(pygame.sprite.Sprite):
 # Game starts
 
 
-StartMenu.StartMenu()
+Start_Menu.StartMenu()
 
 
 

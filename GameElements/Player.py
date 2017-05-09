@@ -50,3 +50,9 @@ class Player:
         firstFork = 2 ** level
         for i in range(firstFork, 2 * firstFork):
             self.path.forkTree[i].toggle()
+
+    def pathConcluded(self):
+        pass
+
+    def didWin(self):
+        pass

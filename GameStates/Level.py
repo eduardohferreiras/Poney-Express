@@ -42,7 +42,7 @@ class Level():
                     return Representations.gameStates["GOING_TO_NEXT_LEVEL"]
                 elif not player.didWin():
                     return Representations.gameStates["GAME_OVER"]
-            elif not player.pathConluded():
+            elif not player.pathConcluded():
                 #Ver se clicou, dar step, atualizar tudo, dar display.update(), blit?.
                 for event in pygame.event.get():
                     if event.type == pygame.MOUSEBUTTONUP

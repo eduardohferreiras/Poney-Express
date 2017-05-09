@@ -5,11 +5,11 @@ import time
 
 pygame.init()
 
-display_width = 800
-display_height = 600
-gameDisplay = pygame.display.set_mode((display_width, display_height))
-background_Image = pygame.image.load('Assets/Images/Phase_1.jpg')
-
+# display_width = 800
+# display_height = 600
+# gameDisplay = pygame.display.set_mode((display_width, display_height))
+# background_Image = pygame.image.load('Assets/Images/Phase_1.jpg')
+#
 
 
 Fork_Color = (132, 60, 12)
@@ -38,35 +38,30 @@ class Path:
                 fork = Fork_Alternative.Fork_Alternative(gameDisplay, x_init, y_init, level_length, level_height)
                 fork.draw()
             else:
-<<<<<<< HEAD
                 level_height = (0.8 * display_height) / self.numberOfLevels
                 x_init = x_init + level_length
                 for j in range(i):
                     y_init = (0.5 * display_height) + (((i - 1) / 2) * level_height) - (j * level_height)
-=======
                 level_height = (0.8 * display_height) /(self.numberOfLevels)
                 x_init = x_init + level_length
                 for j in range(i):
                     y_init = (0.5 * display_height) + (((i - 1) / 2) * level_height) - (j * level_height)
 
->>>>>>> 6eb1846849ad40b0b114e5dc9d5ff06d7ea1b118
                     fork = Fork_Alternative.Fork_Alternative(gameDisplay, x_init, y_init, level_length, level_height)
                     fork.draw()
 
-
-<<<<<<< HEAD
-p = Path(5)
-=======
-p = Path(50)
-
-
->>>>>>> 6eb1846849ad40b0b114e5dc9d5ff06d7ea1b118
-gameExit = False
-while not gameExit:
-    for event in pygame.event.get():
-        if event.type == pygame.KEYDOWN:
-            gameExit = True
-    gameDisplay.blit(background_Image, (0,0))
-    p.plotPath()
-    pygame.display.update()
-    time.sleep(2)
+#
+#
+#
+# p = Path(5)
+# p = Path(50)
+#
+# gameExit = False
+# while not gameExit:
+#     for event in pygame.event.get():
+#         if event.type == pygame.KEYDOWN:
+#             gameExit = True
+#     gameDisplay.blit(background_Image, (0,0))
+#     p.plotPath()
+#     pygame.display.update()
+#     time.sleep(2)

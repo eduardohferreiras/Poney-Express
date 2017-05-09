@@ -26,14 +26,14 @@ class Path:
                 forkHeight = 0 # The gate will be a straight horizontal line
                 x_init = Representations.xInitialPos
                 y_init = displayHeight / 2
-                self.forkTree.append(Fork_Alternative.Fork_Alternative(gameDisplay, x_init, y_init, forkLength, forkHeight, randState))
+                self.forkTree.append(Fork_Alternative.Fork_Alternative(x_init, y_init, forkLength, forkHeight, randState))
 
             else:
                 forkHeight = (0.8 * displayHeight) / self.numberOfLevels
                 x_init = Representations.xInitialPos + forkLength
                 for j in range(i):
                     y_init = (0.5 * displayHeight) + (((i - 1) / 2) * forkHeight) - (j * forkHeight)
-                    self.forkTree.append(Fork_Alternative.Fork_Alternative(gameDisplay, x_init, y_init, forkLength, forkHeight, randState))
+                    self.forkTree.append(Fork_Alternative.Fork_Alternative(x_init, y_init, forkLength, forkHeight, randState))
 
 
 

@@ -3,6 +3,7 @@ import random
 
 Fork_Color = (132, 60, 12)
 
+<<<<<<< HEAD
 # TESTES
 # pygame.init()
 #
@@ -10,6 +11,15 @@ Fork_Color = (132, 60, 12)
 # display_height = 600
 # gameDisplay = pygame.display.set_mode((display_width, display_height))
 # background_Image = pygame.image.load('../Assets/Images/Phase_1.jpg')
+=======
+# #TESTES
+pygame.init()
+
+display_width = 800
+display_height = 600
+gameDisplay = pygame.display.set_mode((display_width, display_height))
+background_Image = pygame.image.load('../Assets/Images/Phase_1.jpg')
+>>>>>>> 6eb1846849ad40b0b114e5dc9d5ff06d7ea1b118
 
 
 class Fork_Alternative:
@@ -26,10 +36,12 @@ class Fork_Alternative:
         self.up_down = up_down
         if self.up_down == 0:
             self.x_end = self.x_init + self.level_length
-            self.y_end = self.y_init - (self.level_height / 2)
+            self.y_end = self.y_init +(self.level_height / 2)
+
         else:
             self.x_end = self.x_init + self.level_length
-            self.y_end = self.y_init + (self.level_height / 2)
+            self.y_end = self.y_init - (self.level_height / 2)
+
 
     def draw(self):
         # Plots the lines of the gates
@@ -47,6 +59,7 @@ class Fork_Alternative:
             self.y_end = self.y_init - (self.level_height / 2)
 
 
+<<<<<<< HEAD
 # TESTES
 # p = Fork_Alternative(gameDisplay, 100, 300, 50, 50)
 # gameExit = False
@@ -57,3 +70,17 @@ class Fork_Alternative:
 #     gameDisplay.blit(background_Image, (0,0))
 #     p.draw()
 #     pygame.display.update()
+=======
+# # TESTES
+p = Fork_Alternative(gameDisplay, 200, 390, 50, 50)
+gameExit = False
+while not gameExit:
+    for event in pygame.event.get():
+        if event.type == pygame.MOUSEBUTTONUP:
+            p.toggle()
+        elif event.type ==pygame.KEYDOWN:
+            gameExit= True
+    gameDisplay.blit(background_Image, (0,0))
+    p.draw()
+    pygame.display.update()
+>>>>>>> 6eb1846849ad40b0b114e5dc9d5ff06d7ea1b118

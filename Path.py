@@ -1,6 +1,7 @@
 import pygame
 from Engine import Fork_Alternative
 import random
+import time
 
 pygame.init()
 
@@ -37,15 +38,29 @@ class Path:
                 fork = Fork_Alternative.Fork_Alternative(gameDisplay, x_init, y_init, level_length, level_height)
                 fork.draw()
             else:
+<<<<<<< HEAD
                 level_height = (0.8 * display_height) / self.numberOfLevels
                 x_init = x_init + level_length
                 for j in range(i):
                     y_init = (0.5 * display_height) + (((i - 1) / 2) * level_height) - (j * level_height)
+=======
+                level_height = (0.8 * display_height) /(self.numberOfLevels)
+                x_init = x_init + level_length
+                for j in range(i):
+                    y_init = (0.5 * display_height) + (((i - 1) / 2) * level_height) - (j * level_height)
+
+>>>>>>> 6eb1846849ad40b0b114e5dc9d5ff06d7ea1b118
                     fork = Fork_Alternative.Fork_Alternative(gameDisplay, x_init, y_init, level_length, level_height)
                     fork.draw()
 
 
+<<<<<<< HEAD
 p = Path(5)
+=======
+p = Path(50)
+
+
+>>>>>>> 6eb1846849ad40b0b114e5dc9d5ff06d7ea1b118
 gameExit = False
 while not gameExit:
     for event in pygame.event.get():
@@ -54,3 +69,4 @@ while not gameExit:
     gameDisplay.blit(background_Image, (0,0))
     p.plotPath()
     pygame.display.update()
+    time.sleep(2)

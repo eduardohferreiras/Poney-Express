@@ -3,13 +3,13 @@ import random
 
 Fork_Color = (132, 60, 12)
 
-# # #TESTES
-# pygame.init()
-#
-# display_width = 800
-# display_height = 600
-# gameDisplay = pygame.display.set_mode((display_width, display_height))
-# background_Image = pygame.image.load('../Assets/Images/Phase_1.jpg')
+# #TESTES
+pygame.init()
+
+display_width = 800
+display_height = 600
+gameDisplay = pygame.display.set_mode((display_width, display_height))
+background_Image = pygame.image.load('../Assets/Images/Phase_1.jpg')
 
 
 class Fork_Alternative:
@@ -24,10 +24,12 @@ class Fork_Alternative:
         self.up_down = up_down
         if self.up_down == 0:
             self.x_end = self.x_init + self.level_length
-            self.y_end = self.y_init - (self.level_height / 2)
+            self.y_end = self.y_init +(self.level_height / 2)
+
         else:
             self.x_end = self.x_init + self.level_length
-            self.y_end = self.y_init + (self.level_height / 2)
+            self.y_end = self.y_init - (self.level_height / 2)
+
 
     def draw(self):
         pygame.draw.line(self.image, Fork_Color, (self.x_init, self.y_init), (self.x_end, self.y_end), 5)
@@ -43,13 +45,15 @@ class Fork_Alternative:
             self.y_end = self.y_init - (self.level_height / 2)
 
 
-# # # TESTES
-# p = Fork_Alternative(gameDisplay, 200, 390, 50, 50)
-# gameExit = False
-# while not gameExit:
-#     for event in pygame.event.get():
-#         if event.type == pygame.KEYDOWN:
-#             gameExit = True
-#     gameDisplay.blit(background_Image, (0,0))
-#     p.draw()
-#     pygame.display.update()
+# # TESTES
+p = Fork_Alternative(gameDisplay, 200, 390, 50, 50)
+gameExit = False
+while not gameExit:
+    for event in pygame.event.get():
+        if event.type == pygame.MOUSEBUTTONUP:
+            p.toggle()
+        elif event.type ==pygame.KEYDOWN:
+            gameExit= True
+    gameDisplay.blit(background_Image, (0,0))
+    p.draw()
+    pygame.display.update()

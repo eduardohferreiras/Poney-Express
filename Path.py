@@ -33,7 +33,7 @@ class Path:
             else:
                 level_height = (0.8 * display_height) / level_length
                 x_init = x_init + level_length
-                for j in range(i - 1):
+                for j in range(i):
                     y_init = (0.5 * display_height) + (((i - 1) / 2) * level_height) - (j * level_height)
                     fork = Fork_Alternative(gameDisplay, x_init, y_init, level_length, level_height)
                     fork.draw()

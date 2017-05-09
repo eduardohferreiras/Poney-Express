@@ -1,7 +1,4 @@
-import pygame
-import random
-
-Fork_Color = (132, 60, 12)
+import pygame, Representations, random
 
 class Fork_Alternative:
 
@@ -24,7 +21,7 @@ class Fork_Alternative:
 
     def draw(self):
         # Plots the lines of the gates
-        pygame.draw.line(pygame.display.get_surface(), Fork_Color, (self.x_init, self.y_init), (self.x_end, self.y_end), 5)
+        pygame.draw.line(pygame.display.get_surface(), Representations.Fork_Color, (self.x_init, self.y_init), (self.x_end, self.y_end), 5)
 
     def toggle(self):
         # Alternates gates

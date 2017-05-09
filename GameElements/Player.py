@@ -1,20 +1,47 @@
+from GameElements import Path
 import pygame
+import Representations
+import math
 
-class Player():
-    def __init__(self):
-        self.image = pygame.Surface((50, 50))
-        self.image.fill((0, 0, 0))
-        self.rect = self.image.get_rect()
+playerColor = (132, 3, 20)
+display_width = 800
+display_height = 600
 
-        self.rect.x = 0
-        self.rect.y = 550
+playerRadius = 10
+stepSize = 1.0
 
-    def movePlayer(self, fork):
-        if self.rect.x < 1700:
-            self.rect.x += 1
-        if fork.rect.x >= (self.rect.x - 5) and fork.rect.x <= (self.rect.x):
-            fork.canToggle = False
-            if fork.switch == True:
-                self.rect.y += 135
-            else:
-                self.rect.y -= 120
+class Player_Display:
+    # This class is resposible for the main character, the player of the game
+    def __init__(self, gameSurface, path):
+        self.gameSurface = gameSurface
+        self.path = path
+        self.xPos = Representations.x_init_player
+        self.yPos = display_height / 2
+
+    def draw(self):
+    # plots the player in the display
+    pygame.draw.circle(self.gameSurface, playerColor, (self.xPos, self.yPos), playerRadius)
+
+    def step(self):
+    # player is one step closer to the end of the game
+    self.xPos += stepSize
+    levelLenght = 0.7 * display_width / (self.path.numberOfLevels + 1)
+    if self.xPos > (levelLenght + Representations.x_init_player): # In this case yPos changes
+        levelHeight = 0.8 * display_height / self.path.numberOfLevels
+        tangent = levelHeight / (2 * levelLenght)
+
+        xFork = math.floor((self.xPos - Representations.x_init_player)/ (levelLenght))
+        yFork = (xFork - 1) - math.floor((self.yPos - (display_height/2)) / (levelHeight / 2))
+
+        if (self.xPos - Representations.x_init_player) / (levelLenght) - math.floor((self.xPos - Representations.x_init_player) / (levelLenght)) == 0:
+            xFork = math.floor((self.xPos - stepSize - Representations.x_init_player)/ (levelLenght))
+            yFork = (xFork - 1) - math.floor((self.yPos - (display_height/2)) / (levelHeight / 2))
+
+        if self.path.matrix[xFork][yFork] == 1: # Fork is up
+            self.yPos += tangent * stepSize
+        else: # Fork is down
+            self.yPos -= tangent * stepSize
+
+
+    def toggle(self):
+    # toggles the next forks of the path

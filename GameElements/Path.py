@@ -1,18 +1,8 @@
-import pygame
+import pygame, Representations
 from Engine import Fork_Alternative
 import random
 
 pygame.init()
-
-# display_width = 800
-# display_height = 600
-# gameDisplay = pygame.display.set_mode((display_width, display_height))
-# background_Image = pygame.image.load('Assets/Images/Phase_1.jpg')
-#
-
-
-Fork_Color = (132, 60, 12)
-x_init_player = 30
 
 class Path:
     def __init__(self, levels):
@@ -28,16 +18,17 @@ class Path:
         # coordinates, "x_end" and "y_end" (gate's final coordinates) and level_length
         # and level_height (the length and height of each gate)
 
-        s = self.numberOfLevels;
-        matrix = [[0 for x in range(s)] for y in range(s)]
+        self.matrix = [[0 for x in range(self.numberOfLevels)] for y in range(self.numberOfLevels)]
+
         level_length = (0.7 * display_width) / (self.numberOfLevels + 1)
+
         for i in range(self.numberOfLevels + 1):
             if i == 0:
                 level_height = 0 # The gate will be a straight horizontal line
-                x_init = x_init_player
+                x_init = Representations.x_init_player
                 y_init = display_height / 2
                 fork = Fork_Alternative.Fork_Alternative(gameDisplay, x_init, y_init, level_length, level_height)
-                matrix[i][0] = fork.getArrayElement()
+                self.matrix[i][0] = fork.getArrayElement()
                 fork.draw()
             else:
                 level_height = (0.8 * display_height) / self.numberOfLevels
@@ -49,6 +40,6 @@ class Path:
                 for j in range(i):
                     y_init = (0.5 * display_height) + (((i - 1) / 2) * level_height) - (j * level_height)
                     fork = Fork_Alternative.Fork_Alternative(gameDisplay, x_init, y_init, level_length, level_height)
-                    matrix[i][j] = fork.getArrayElement()
+                    self.matrix[i][j] = fork.getArrayElement()
                     fork.draw()
 

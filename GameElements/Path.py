@@ -2,7 +2,9 @@ import pygame, Representations
 from Engine import Fork_Alternative
 import random
 
-pygame.init()
+displayWidth = 800
+displayHeight = 600
+gameDisplay = pygame.display.set_mode((displayWidth, displayHeight))
 
 class Path:
     def __init__(self, levels):
@@ -12,25 +14,26 @@ class Path:
         self.numberOfExits = (2 ** levels)
         self.rightExit = random.randint(0, self.numberOfExits - 1)
         self.forkTree = []
-        for i in range((levels + 1):
 
+        forkLength = (0.7 * displayWidth) / (self.numberOfLevels + 1)
+        for i in range(levels + 1):
             randPosition = random.randint(0, 1)
             randState = Representations.forkState["DOWN"]
             if randPosition == 1:
                 randState = Representations.forkState["UP"]
 
             if i == 0:
-                level_height = 0 # The gate will be a straight horizontal line
-                x_init = Representations.x_init_player
-                y_init = display_height / 2
-                self.forkTree.append(Fork_Alternative.Fork_Alternative(gameDisplay, x_init, y_init, level_length, level_height, randState))
+                forkHeight = 0 # The gate will be a straight horizontal line
+                x_init = Representations.xInitialPos
+                y_init = displayHeight / 2
+                self.forkTree.append(Fork_Alternative.Fork_Alternative(gameDisplay, x_init, y_init, forkLength, forkHeight, randState))
 
             else:
-                level_height = (0.8 * display_height) / self.numberOfLevels
-                x_init = Representations.x_init_player + level_length
+                forkHeight = (0.8 * displayHeight) / self.numberOfLevels
+                x_init = Representations.xInitialPos + forkLength
                 for j in range(i):
-                    y_init = (0.5 * display_height) + (((i - 1) / 2) * level_height) - (j * level_height)
-                    self.forkTree.append(Fork_Alternative.Fork_Alternative(gameDisplay, x_init, y_init, level_length, level_height, randState))
+                    y_init = (0.5 * displayHeight) + (((i - 1) / 2) * forkHeight) - (j * forkHeight)
+                    self.forkTree.append(Fork_Alternative.Fork_Alternative(gameDisplay, x_init, y_init, forkLength, forkHeight, randState))
 
 
 

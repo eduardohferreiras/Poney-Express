@@ -11,6 +11,7 @@ class Path:
         self.numberOfLevels = levels
         self.numberOfExits = (2 ** levels)
         self.rightExit = random.randint(0, self.numberOfExits - 1)
+        self.forkTree = []
 
     def plotPath(self):
         # Calls the Fork class every time it needs to draw an alternating gate,

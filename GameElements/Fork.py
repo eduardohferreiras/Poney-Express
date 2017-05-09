@@ -2,16 +2,14 @@ import pygame, Representations, random
 
 class Fork_Alternative:
 
-    def __init__(self, x_init, y_init, level_length, level_height):
+    def __init__(self, x_init, y_init, level_length, level_height, forkState):
         self.x_init = x_init
         self.y_init = y_init
         self.level_length = level_length
         self.level_height = level_height
+        self.forkState = forkState
 
-        # Starts with a random initial configuration for the gate
-        up_down = round(random.randint(0,1))
-        self.up_down = up_down
-        if self.up_down == 0:
+        if self.forkState == Representations.forkState["DOWN"]:
             self.x_end = self.x_init + self.level_length
             self.y_end = self.y_init +(self.level_height / 2)
         else:

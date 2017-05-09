@@ -10,10 +10,10 @@ display_height = 600
 playerRadius = 10
 stepSize = 1.0
 
-class Player_Display:
+class Player:
     # This class is resposible for the main character, the player of the game
-    def __init__(self, gameSurface, path):
-        self.gameSurface = gameSurface
+    def __init__(self, path):
+        self.gameSurface = pygame.display.get_surface()
         self.path = path
         self.xPos = Representations.x_init_player
         self.yPos = display_height / 2

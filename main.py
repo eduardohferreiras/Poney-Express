@@ -1,8 +1,8 @@
-import Representations
 import pygame
 from pygame.locals import *
 
-from Engine import Player_Engine, Fork_Engine, Score_Engine
+import Representations
+from GameElements import Player, Fork_Engine, Score
 from GameStates import Start_Menu
 from UIElements import Canvas
 
@@ -23,8 +23,8 @@ pygame.init()
 #Inicialização das classes
 canvas = Canvas.Canvas(1080, 1920)
 fork = Fork_Engine.Fork(600, 700)
-score = Score_Engine.Score()
-player = Player_Engine.Player()
+score = Score.Score()
+player = Player.Player()
 startMenu = Start_Menu.Start_Menu()
 
 # Setando o display do jogo.
@@ -58,15 +58,6 @@ while not gameExit:
         if event.type == KEYDOWN:
             if event.key == K_ESCAPE:
                 gameExit = True
-
-    # Updates
-    score.update(canvas.gameCanvas)
-    pygame.display.update()
-    canvas.gameCanvas.fill([255, 255, 255])
-    player.movePlayer(fork)
-    #gameDisplay.blit(BackGround.image, BackGround.rect)
-    canvas.gameCanvas.blit(fork.image, fork.rect)
-    canvas.gameCanvas.blit(player.image, player.rect)
 
 pygame.quit()
 quit()

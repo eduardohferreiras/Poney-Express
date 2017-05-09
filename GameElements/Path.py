@@ -1,7 +1,6 @@
 import pygame
 from Engine import Fork_Alternative
 import random
-import time
 
 pygame.init()
 
@@ -14,7 +13,6 @@ pygame.init()
 
 Fork_Color = (132, 60, 12)
 x_init_player = 30
-
 
 class Path:
     def __init__(self, levels):
@@ -29,6 +27,9 @@ class Path:
         # (up and down). It needs to define "x_init" and "y_init" (gate's initial
         # coordinates, "x_end" and "y_end" (gate's final coordinates) and level_length
         # and level_height (the length and height of each gate)
+
+        s = self.numberOfLevels;
+        matrix = [[0 for x in range(s)] for y in range(s)]
         level_length = (0.7 * display_width) / (self.numberOfLevels + 1)
         for i in range(self.numberOfLevels + 1):
             if i == 0:
@@ -36,6 +37,7 @@ class Path:
                 x_init = x_init_player
                 y_init = display_height / 2
                 fork = Fork_Alternative.Fork_Alternative(gameDisplay, x_init, y_init, level_length, level_height)
+                matrix[i][0] = fork.getArrayElement()
                 fork.draw()
             else:
                 level_height = (0.8 * display_height) / self.numberOfLevels
@@ -46,22 +48,7 @@ class Path:
                 x_init = x_init + level_length
                 for j in range(i):
                     y_init = (0.5 * display_height) + (((i - 1) / 2) * level_height) - (j * level_height)
-
                     fork = Fork_Alternative.Fork_Alternative(gameDisplay, x_init, y_init, level_length, level_height)
+                    matrix[i][j] = fork.getArrayElement()
                     fork.draw()
 
-#
-#
-#
-# p = Path(5)
-# p = Path(50)
-#
-# gameExit = False
-# while not gameExit:
-#     for event in pygame.event.get():
-#         if event.type == pygame.KEYDOWN:
-#             gameExit = True
-#     gameDisplay.blit(background_Image, (0,0))
-#     p.plotPath()
-#     pygame.display.update()
-#     time.sleep(2)

@@ -26,7 +26,7 @@ class Start_Menu(Menu.Menu):
                         pygame.quit()
                         quit()
                         return Representations.gameStates["SHUTTING DOWN"]
-                    elif event.key == K_RETURN:
+                    elif event.key == K_SPACE:
                         self.isInMenu = False
                         return Representations.gameStates["ON_INSTRUCTIONS"]
                     else:
@@ -39,7 +39,7 @@ class Start_Menu(Menu.Menu):
                         titleSurf, titleRect = self.text_objects("Poney Express", largeText, (0, 0, 0))
                         titleRect.center = ((gameCanvas.get_width() / 2 + 330), (gameCanvas.get_height() / 2 - 300))
 
-                        subTitleSurf, subTitleRect = self.text_objects("Press Enter if you dare", notSoLargeText,
+                        subTitleSurf, subTitleRect = self.text_objects("Press Space if you dare", notSoLargeText,
                                                                        (216, 212, 212))
                         subTitleRect.center = (gameCanvas.get_width() / 2, (gameCanvas.get_height() / 2 + 200))
 
@@ -59,7 +59,7 @@ class Start_Menu(Menu.Menu):
                     titleSurf, titleRect = self.text_objects("Poney Express", largeText, (0, 0, 0))
                     titleRect.center = ((gameCanvas.get_width() / 2 + 330), (gameCanvas.get_height() / 2 - 300))
 
-                    subTitleSurf, subTitleRect = self.text_objects("Press Enter if you dare", notSoLargeText,
+                    subTitleSurf, subTitleRect = self.text_objects("Press Space if you dare", notSoLargeText,
                                                                    (216, 212, 212))
                     subTitleRect.center = (gameCanvas.get_width() / 2, (gameCanvas.get_height() / 2 + 200))
 

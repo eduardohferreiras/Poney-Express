@@ -34,11 +34,27 @@ class Path:
             else:
                 forkHeight = (0.8 * self.gameDisplay.get_height()) / self.numberOfLevels
                 x_init += forkLength
+
+                counter = 0
                 j = 0
-                while j < 2 ** (i - 1):
-                    y_init = (0.5 * self.gameDisplay.get_height()) + (((i - 1) / 2) * forkHeight) - (j * forkHeight)
+                while j < i:
+                    if j == 0 or j == i - 1:
+                        y_init = (0.5 * self.gameDisplay.get_height()) + (((i - 1) / 2) * forkHeight) - (j * forkHeight)
+                        self.forkTree.append(Fork.Fork(x_init, y_init, forkLength, forkHeight, randState))
+                        j += 1
+                    else:
+                        y_init = (0.5 * self.gameDisplay.get_height()) + (((i - 1) / 2) * forkHeight) - (j * forkHeight)
+                        self.forkTree.append(Fork.Fork(x_init, y_init, forkLength, forkHeight, randState))
+                        y_init = (0.5 * self.gameDisplay.get_height()) + (((i - 1) / 2) * forkHeight) - (
+                        (j + 1) * forkHeight)
+                        self.forkTree.append(Fork.Fork(x_init, y_init, forkLength, forkHeight, randState))
+                        j += 2
+                    counter = j
+
+                while counter < 2 ** (i - 1):
+                    y_init = (0.5 * self.gameDisplay.get_height()) + (((i - 1) / 2) * forkHeight) - (0 * forkHeight)
                     self.forkTree.append(Fork.Fork(x_init, y_init, forkLength, forkHeight, randState))
-                    j += 1
+                    counter += 1
 
 
 

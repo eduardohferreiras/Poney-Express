@@ -51,13 +51,32 @@ class Player:
     def toggle(self):
     # toggles the next forks of the path
         levelLength = 0.7 * display_width / (self.path.numberOfLevels + 1)
-        level = math.floor((self.xPos - Representations.xInitialPos) / levelLength)
-        firstFork = 2 ** level
-        for i in range(firstFork, 2 * firstFork):
-            self.path.forkTree[i].toggle()
+        xFork = math.floor((self.xPos - Representations.xInitialPos) / (levelLength))
+
+        if xFork < self.path.numberOfLevels:
+            levelLength = 0.7 * display_width / (self.path.numberOfLevels + 1)
+            level = math.floor((self.xPos - Representations.xInitialPos) / levelLength)
+            firstFork = 2 ** level
+            for i in range(firstFork, 2 * firstFork):
+                self.path.forkTree[i].toggle()
 
     def pathConcluded(self):
+        levelLength = 0.7 * display_width / (self.path.numberOfLevels + 1)
+        if self.xPos >= levelLength - (4 * stepSize):
+            return True
         return False
 
     def didWin(self):
-        pass
+        if self.pathConcluded() == False:
+            pass
+        else:
+            levelHeight = 0.8 * display_height / self.path.numberOfLevels
+            yTarget = display_height / 2
+            if self.path.numberOfExits%2 == 0:
+                yTarget += ((self.path.rightExit - (self.path.numberOfExits/2)) * levelHeight) + (levelHeight/2)
+            else:
+                yTarget += (self.path.rightExit - math.floor(self.path.numberOfExits/2)) * levelHeight
+
+            if (self.yPos < yTarget + (levelHeight/2)) and (self.yPos > yTarget - (levelHeight/2)):
+                return True
+            return False

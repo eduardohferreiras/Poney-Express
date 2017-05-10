@@ -57,7 +57,7 @@ class Opening_Instructions:
 
     def execute_instructions(self):
         self.set_background_image('src/Assets/Images/CowboyInstructor.jpg')
-        self.set_font("src/Assets/Fonts/BillytheKid.ttf", 20)
+        self.set_font("src/Assets/Fonts/BillytheKid.ttf", 40)
         self.gameCanvas = pygame.display.get_surface()
 
         self.gameCanvas.blit(self.backgroundImage, (0, 0))

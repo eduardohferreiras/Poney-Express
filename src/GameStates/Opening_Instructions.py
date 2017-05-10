@@ -16,7 +16,7 @@ class Opening_Instructions:
         self.instructionsState = 0
 
     def text_objects(self, text):
-        textSurface = self.font.render(text, True, colo r)
+        textSurface = self.font.render(text, True, color)
         return textSurface, textSurface.get_rect()
 
     def message_to_screen(self, msg, delta_y):

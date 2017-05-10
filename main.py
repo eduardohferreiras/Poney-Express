@@ -17,7 +17,7 @@ gameOverMenu = Game_Over_Menu.Game_Over_Menu()
 canvas.set_canvas()
 
 #Setando o primeiro Game_State
-currentGameState = startMenu.execute_menu()
+currentGameState = gameOverMenu.execute_menu()
 
 globalGameExit = False
 while not globalGameExit:

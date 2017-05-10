@@ -44,7 +44,7 @@ class Player:
                 xFork = math.floor((self.xPos - stepSize - Representations.xInitialPos) / (levelLength))
                 # yFork = (xFork - 1) - math.floor((self.yPos - (display_height/2)) / (levelHeight / 2))
                 forkNumber += (xFork - 1) + math.floor((self.yPos - (self.gameSurface.get_height() / 2)) / (levelHeight))
-            print(xFork)
+
             nextFork = self.path.forkTree[forkNumber]
 
             if nextFork.forkState == Representations.forkState["UP"]: # Fork is up

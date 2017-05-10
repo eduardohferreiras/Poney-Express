@@ -10,7 +10,7 @@ class Path:
         # Recieves the number of levels in the bifurcation network,
         # the number of exits in the network and the right exit
         self.numberOfLevels = levels
-        self.numberOfExits = (2 ** levels)
+        self.numberOfExits = levels + 1
         self.rightExit = random.randint(0, self.numberOfExits - 1)
         self.forkTree = []
         self.gameDisplay = pygame.display.get_surface()
@@ -48,20 +48,22 @@ class Path:
                         j += 2
 
 
-
     def plotPath(self):
         # Plots every fork of the path
         for fork in self.forkTree:
             fork.draw()
 
-        constSize = 175
+        forkHeight = (0.8 * self.gameDisplay.get_height()) / self.numberOfLevels
         gold = pygame.image.load("src/Assets/Images/Gold_Final.png")
         bomb = pygame.image.load("src/Assets/Images/Bombs_Final.png")
         index = 2 ** (self.numberOfLevels - 1)
+        print(index)
         firstX = self.forkTree[index].xStart + 300
-        firstY = self.forkTree[index].yStart - 400
+        firstY = 0.1 * self.gameDisplay.get_height() - 100
+        # print("xPos = {0}; yPos = {1}".format(firstX, firstY))
+        # print("height = {0}".format(forkHeight))
         for i in range(self.numberOfExits):
             if i == self.rightExit:
-                self.gameDisplay.blit(gold, (firstX, firstY + i*constSize))
+                self.gameDisplay.blit(gold, (firstX, firstY + i*forkHeight))
             else:
-                self.gameDisplay.blit(bomb, (firstX, firstY + i*constSize))
+                self.gameDisplay.blit(bomb, (firstX, firstY + i*forkHeight))

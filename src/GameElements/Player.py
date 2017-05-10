@@ -18,6 +18,10 @@ class Player:
         self.cowboy1 = pygame.image.load("src/Assets/Images/CowboySprites/cowboy_1.png")
         self.cowboy2 = pygame.image.load("src/Assets/Images/CowboySprites/cowboy_2.png")
 
+        for fork in self.path.forkTree:
+            fork.toggle()
+            fork.toggle()
+
     def draw(self,counter):
     # plots the player in the display
         self.playerPos= (self.xPos,self.yPos)

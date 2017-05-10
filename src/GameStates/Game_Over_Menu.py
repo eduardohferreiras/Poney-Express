@@ -40,4 +40,4 @@ class Game_Over_Menu(Menu.Menu):
             gameCanvas.blit(titleSurf, titleRect)
 
             pygame.display.update()
-            clock.tick(60)
+            clock.tick(30)

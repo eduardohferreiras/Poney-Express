@@ -51,10 +51,9 @@ class Level():
                             return Representations.gameStates["SHUTTING DOWN"]
                         elif event.key == K_SPACE:
                             player.toggle()
-
                 player.step()
                 gameCanvas.blit(self.backgroundImage, (0,0))
                 player.draw()
                 path.plotPath()
                 pygame.display.update()
-                clock.tick(60)
+                clock.tick(30)

@@ -17,7 +17,6 @@ class Start_Menu(Menu.Menu):
 
         while self.isInMenu:
             for event in pygame.event.get():
-                print(event)
                 if event.type == pygame.QUIT:
                     self.isInMenu = False
                     return Representations.gameStates["SHUTTING DOWN"]

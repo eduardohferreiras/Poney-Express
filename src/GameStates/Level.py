@@ -33,7 +33,6 @@ class Level():
         while self.isPlaying:
 
             if player.pathConcluded():
-                print("1")
                 if player.didWin():
                     self.difficulty = self.difficulty + 1
                     return Representations.gameStates["GOING_TO_NEXT_LEVEL"]

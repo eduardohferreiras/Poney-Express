@@ -54,5 +54,5 @@ class Path:
 
     def plotPath(self):
         # Plots every fork of the path
-        for i in range(2 ** self.numberOfLevels):
-            self.forkTree[i].draw()
+        for fork in self.forkTree:
+            fork.draw()

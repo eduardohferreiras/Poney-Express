@@ -16,12 +16,12 @@ class Game_Over_Menu(Menu.Menu):
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.isInMenu = False
-                    return Representations.gameStates["SHUTTING DOWN"]
+                    return Representations.gameStates["GAME_OVER"]
                 elif event.type == KEYDOWN:
                     if event.key == K_ESCAPE:
                         pygame.quit()
                         quit()
-                        return Representations.gameStates["SHUTTING DOWN"]
+                        return Representations.gameStates["GAME_OVER"]
                     elif event.key == K_RETURN:
                         self.isInMenu = False
                         return Representations.gameStates["ON_START_MENU"]

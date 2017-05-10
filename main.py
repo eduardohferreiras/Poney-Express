@@ -31,6 +31,6 @@ while not globalGameExit:
        currentGameState = gameOverMenu.execute_menu()
    elif currentGameState == Representations.gameStates["ON_INSTRUCTIONS"]:
        currentGameState = openingInstructions.execute_instructions()
-
+       
 pygame.quit()
 quit()

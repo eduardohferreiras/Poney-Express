@@ -10,7 +10,7 @@ pygame.init()
 class Level():
     def __init__(self):
         self.isPlaying = True
-        self.difficulty = 1
+        self.difficulty = 2
         self.path = None
         self.player = None
 

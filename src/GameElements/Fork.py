@@ -23,6 +23,11 @@ class Fork:
     def draw(self):
         # Plots the lines of the gates
         pygame.draw.line(pygame.display.get_surface(), Representations.Fork_Color, (self.xStart, self.yStart), (self.xEnd, self.yEnd), 5)
+        if self.forkState == Representations.forkState["DOWN"]:
+            pygame.draw.line(pygame.display.get_surface(), Representations.Fork_Weak_Color, (self.xStart,self.yStart), (self.xEnd, self.yEnd + self.forkHeight), 2)
+        if self.forkState == Representations.forkState["UP"]:
+            pygame.draw.line(pygame.display.get_surface(), Representations.Fork_Weak_Color, (self.xStart, self.yStart),
+                             (self.xEnd, self.yEnd - self.forkHeight), 2)
 
     def toggle(self):
         # Alternates gates

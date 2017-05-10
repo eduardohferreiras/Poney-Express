@@ -61,8 +61,7 @@ class Player:
                 self.path.forkTree[i].toggle()
 
     def pathConcluded(self):
-        levelLength = 0.7 * display_width / (self.path.numberOfLevels + 1)
-        if self.xPos >= levelLength - (4 * stepSize):
+        if self.xPos >= Representations.xInitialPos + 0.7 * display_width - (4 * stepSize):
             return True
         return False
 

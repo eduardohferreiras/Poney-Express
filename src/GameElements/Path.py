@@ -22,9 +22,11 @@ class Path:
         x_init = Representations.xInitialPos
         for i in range(levels + 1):
             randPosition = random.randint(0, 1)
-            randState = Representations.forkState["DOWN"]
+
             if randPosition == 1:
                 randState = Representations.forkState["UP"]
+            else:
+                randState = Representations.forkState["DOWN"]
 
             if i == 0:
                 forkHeight = 0 # The gate will be a straight horizontal line

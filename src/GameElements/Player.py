@@ -33,16 +33,16 @@ class Player:
             xFork = math.floor((self.xPos - Representations.xInitialPos) / (levelLength))
             # yFork = (xFork - 1) 8- math.floor((self.yPos - (display_height/2)) / (levelHeight / 2))
             forkNumber = 2 ** (xFork - 1)
-            forkNumber += (xFork - 1) + math.floor((self.yPos - (display_height/2)) / (levelHeight / 2))
+            forkNumber += (xFork - 1) + math.floor((self.yPos - (display_height/2)) / (levelHeight))
 
             if (self.xPos - Representations.xInitialPos) / (levelLength) - math.floor((self.xPos - Representations.xInitialPos) / (levelLength)) == 0:
                 xFork = math.floor((self.xPos - stepSize - Representations.xInitialPos) / (levelLength))
                 # yFork = (xFork - 1) - math.floor((self.yPos - (display_height/2)) / (levelHeight / 2))
-                forkNumber += (xFork - 1) + math.floor((self.yPos - (display_height / 2)) / (levelHeight / 2))
-
+                forkNumber += (xFork - 1) + math.floor((self.yPos - (display_height / 2)) / (levelHeight))
+            print(xFork)
             nextFork = self.path.forkTree[forkNumber]
 
-            if nextFork == Representations.forkState["UP"]: # Fork is up
+            if nextFork.forkState == Representations.forkState["UP"]: # Fork is up
                 self.yPos += tangent * stepSize
             else: # Fork is down
                 self.yPos -= tangent * stepSize

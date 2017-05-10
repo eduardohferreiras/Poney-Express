@@ -26,12 +26,12 @@ class Fork:
 
     def toggle(self):
         # Alternates gates
-        if self.forkState == 0:
-            self.forkState = 1
+        if self.forkState == Representations.forkState["DOWN"]:
+            self.forkState = Representations.forkState["UP"]
             self.xEnd = self.xStart + self.forkLength
             self.yEnd = self.yStart + (self.forkHeight / 2)
         else:
-            self.forkState = 0
+            self.forkState = Representations.forkState["DOWN"]
             self.xEnd = self.xStart + self.forkLength
             self.yEnd = self.yStart - (self.forkHeight / 2)
 

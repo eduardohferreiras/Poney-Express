@@ -22,11 +22,7 @@ class Game_Over_Menu(Menu.Menu):
                         pygame.quit()
                         quit()
                         return Representations.gameStates["GAME_OVER"]
-                    elif event.key == K_RETURN:
-                        self.isInMenu = False
-                        return Representations.gameStates["ON_START_MENU"]
-
-            #Logica do Loop
+            # Logica do Loop
             gameCanvas.fill((0, 0, 0))
             gameCanvas.blit(self.backgroundImage, (0, 0))
 
@@ -34,9 +30,10 @@ class Game_Over_Menu(Menu.Menu):
             notSoLargeText = pygame.font.Font('src/Assets/Fonts/BillyTheKid.ttf', 70)
 
             titleSurf, titleRect = self.text_objects("YOU DIED", largeText, (0, 0, 0))
-            titleRect.center = (gameCanvas.get_width()/2, gameCanvas.get_height()/2)
+            titleRect.center = (gameCanvas.get_width() / 2, gameCanvas.get_height() / 2)
 
-            subTitleSurf, subTitleRect = self.text_objects("Press Enter to try again", notSoLargeText, (50, 50, 50))
+            subTitleSurf, subTitleRect = self.text_objects("Press ESC to to close", notSoLargeText,
+                                                           (50, 50, 50))
             subTitleRect.center = (gameCanvas.get_width() / 2, (gameCanvas.get_height() / 2 + 200))
 
             gameCanvas.blit(subTitleSurf, subTitleRect)

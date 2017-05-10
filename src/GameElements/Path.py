@@ -15,7 +15,7 @@ class Path:
         self.forkTree = []
         self.gameDisplay = pygame.display.get_surface()
 
-        forkLength = (0.7 * self.gameDisplay.get_width()) / (self.numberOfLevels + 1)
+        forkLength = (0.8 * self.gameDisplay.get_width()) / (self.numberOfLevels + 1)
         x_init = Representations.xInitialPos
         for i in range(levels + 1):
             randPosition = random.randint(0, 1)
@@ -64,7 +64,7 @@ class Path:
             fork.draw()
 
     def plotItems(self):
-        forkHeight = (0.7* self.gameDisplay.get_height()) / self.numberOfLevels
+        forkHeight = (0.8* self.gameDisplay.get_height()) / self.numberOfLevels
         gold = pygame.image.load("src/Assets/Images/Gold_Final.png")
         bomb = pygame.image.load("src/Assets/Images/Bombs_Final.png")
         index = 2 ** (self.numberOfLevels - 1)

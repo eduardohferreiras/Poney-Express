@@ -35,7 +35,7 @@ class Player:
     # player is one step closer to the end of the game
         self.xPos += stepSize
 
-        levelLength = 0.7 * self.gameSurface.get_width() / (self.path.numberOfLevels + 1)
+        levelLength = 0.8 * self.gameSurface.get_width() / (self.path.numberOfLevels + 1)
         if self.xPos > (levelLength + Representations.xInitialPos): # If it is not in the initial straight line
             levelHeight = 0.8 * self.gameSurface.get_height() / self.path.numberOfLevels
             tangent = levelHeight / (2 * levelLength)
@@ -51,11 +51,11 @@ class Player:
 
     def toggle(self):
     # toggles the next forks of the path
-        levelLength = 0.7 * self.gameSurface.get_width() / (self.path.numberOfLevels + 1)
+        levelLength = 0.8 * self.gameSurface.get_width() / (self.path.numberOfLevels + 1)
         xFork = math.floor((self.xPos - Representations.xInitialPos) / (levelLength))
 
         if xFork < self.path.numberOfLevels:
-            levelLength = 0.7 * self.gameSurface.get_width() / (self.path.numberOfLevels + 1)
+            levelLength = 0.8 * self.gameSurface.get_width() / (self.path.numberOfLevels + 1)
             level = math.floor((self.xPos - Representations.xInitialPos) / levelLength)
             firstFork = 2 ** level
             if level < self.path.numberOfLevels:
@@ -64,7 +64,7 @@ class Player:
                         self.path.forkTree[i].toggle()
 
     def pathConcluded(self):
-        if self.xPos >= Representations.xInitialPos + 0.7 * self.gameSurface.get_width() - (4 * stepSize):
+        if self.xPos >= Representations.xInitialPos + 0.8 * self.gameSurface.get_width() - (4 * stepSize):
             return True
         return False
 

@@ -34,27 +34,19 @@ class Player:
     def step(self):
     # player is one step closer to the end of the game
         self.xPos += stepSize
+
         levelLength = 0.7 * self.gameSurface.get_width() / (self.path.numberOfLevels + 1)
-        if self.xPos > (levelLength + Representations.xInitialPos): # In this case yPos changes
+        if self.xPos > (levelLength + Representations.xInitialPos): # If it is not in the initial straight line
             levelHeight = 0.8 * self.gameSurface.get_height() / self.path.numberOfLevels
             tangent = levelHeight / (2 * levelLength)
-
             xFork = math.floor((self.xPos - Representations.xInitialPos) / (levelLength))
-            # yFork = (xFork - 1) 8- math.floor((self.yPos - (display_height/2)) / (levelHeight / 2))
-            forkNumber = 2 ** (xFork - 1)
-            forkNumber += (xFork - 1) + math.floor((self.yPos - (self.gameSurface.get_height()/2)) / (levelHeight))
-
-            if (self.xPos - Representations.xInitialPos) / (levelLength) - math.floor((self.xPos - Representations.xInitialPos) / (levelLength)) == 0:
-                xFork = math.floor((self.xPos - stepSize - Representations.xInitialPos) / (levelLength))
-                # yFork = (xFork - 1) - math.floor((self.yPos - (display_height/2)) / (levelHeight / 2))
-                forkNumber += (xFork - 1) + math.floor((self.yPos - (self.gameSurface.get_height() / 2)) / (levelHeight))
-
-            nextFork = self.path.forkTree[forkNumber]
-
-            if nextFork.forkState == Representations.forkState["UP"]: # Fork is up
-                self.yPos += tangent * stepSize
-            elif nextFork.forkState == Representations.forkState["DOWN"]: # Fork is down
+            forkIndex = 2 ** (xFork-1)
+            currentFork = self.path.forkTree[forkIndex]
+            print(currentFork.forkState)
+            if currentFork.forkState == Representations.forkState["UP"]: # Fork is up
                 self.yPos -= tangent * stepSize
+            elif currentFork.forkState == Representations.forkState["DOWN"]: # Fork is down
+                self.yPos += tangent * stepSize
 
 
     def toggle(self):

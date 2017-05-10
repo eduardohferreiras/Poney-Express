@@ -1,5 +1,6 @@
 import pygame
 
+#This class is the parent class of every menu in the game.
 class Menu():
     def __init__(self):
         self.isInMenu = True

@@ -22,7 +22,7 @@ class Game_Over_Menu(Menu.Menu):
                         pygame.quit()
                         quit()
                         return Representations.gameStates["GAME_OVER"]
-            # Logica do Loop
+            # Loop Logic
             gameCanvas.fill((0, 0, 0))
             gameCanvas.blit(self.backgroundImage, (0, 0))
 

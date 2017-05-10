@@ -57,8 +57,9 @@ class Player:
             levelLength = 0.7 * display_width / (self.path.numberOfLevels + 1)
             level = math.floor((self.xPos - Representations.xInitialPos) / levelLength)
             firstFork = 2 ** level
-            for i in range(firstFork, 2 * firstFork):
-                self.path.forkTree[i].toggle()
+            if level < self.path.numberOfLevels:
+                for i in range(firstFork, 2 * firstFork):
+                    self.path.forkTree[i].toggle()
 
     def pathConcluded(self):
         if self.xPos >= Representations.xInitialPos + 0.7 * display_width - (4 * stepSize):

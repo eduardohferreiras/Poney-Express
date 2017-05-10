@@ -1,7 +1,5 @@
 import math
-
 import pygame
-
 from src import Representations
 
 playerColor = (255, 0, 0)
@@ -9,7 +7,7 @@ display_width = 800
 display_height = 600
 
 playerRadius = 10
-stepSize = 1.0
+stepSize = 5.0
 
 class Player:
     # This class is resposible for the main character, the player of the game
@@ -33,13 +31,18 @@ class Player:
             tangent = levelHeight / (2 * levelLength)
 
             xFork = math.floor((self.xPos - Representations.xInitialPos) / (levelLength))
-            yFork = (xFork - 1) - math.floor((self.yPos - (display_height/2)) / (levelHeight / 2))
+            # yFork = (xFork - 1) 8- math.floor((self.yPos - (display_height/2)) / (levelHeight / 2))
+            forkNumber = 2 ** (xFork - 1)
+            forkNumber += (xFork - 1) + math.floor((self.yPos - (display_height/2)) / (levelHeight / 2))
 
             if (self.xPos - Representations.xInitialPos) / (levelLength) - math.floor((self.xPos - Representations.xInitialPos) / (levelLength)) == 0:
                 xFork = math.floor((self.xPos - stepSize - Representations.xInitialPos) / (levelLength))
-                yFork = (xFork - 1) - math.floor((self.yPos - (display_height/2)) / (levelHeight / 2))
+                # yFork = (xFork - 1) - math.floor((self.yPos - (display_height/2)) / (levelHeight / 2))
+                forkNumber += (xFork - 1) + math.floor((self.yPos - (display_height / 2)) / (levelHeight / 2))
 
-            if self.path.matrix[xFork][yFork] == 1: # Fork is up
+            nextFork = self.path.forkTree[forkNumber]
+
+            if nextFork == Representations.forkState["UP"]: # Fork is up
                 self.yPos += tangent * stepSize
             else: # Fork is down
                 self.yPos -= tangent * stepSize

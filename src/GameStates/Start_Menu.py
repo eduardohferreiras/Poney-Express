@@ -9,6 +9,7 @@ pygame.init()
 class Start_Menu(Menu.Menu):
 
     def execute_menu(self):
+        #First, we set the background image and the song.
         pygame.init()
         self.set_background_image('src/Assets/Images/Start_Menu_Background.jpg')
         self.play_music("src/Assets/Sounds/themeSong.mp3")
@@ -17,19 +18,20 @@ class Start_Menu(Menu.Menu):
         clock = pygame.time.Clock()
 
         while self.isInMenu:
+
             for event in pygame.event.get():
-                if event.type == pygame.QUIT:
+                if event.type == pygame.QUIT:# if the current event is to quit the game, then we quit the loop and return the correct gameState
                     self.isInMenu = False
                     return Representations.gameStates["SHUTTING DOWN"]
                 elif event.type == KEYDOWN:
-                    if event.key == K_ESCAPE:
+                    if event.key == K_ESCAPE:# if the user press ESC, the game closes
                         pygame.quit()
                         quit()
                         return Representations.gameStates["SHUTTING DOWN"]
-                    elif event.key == K_SPACE:
+                    elif event.key == K_SPACE:# if the user press Space, the intruction screen starts.
                         self.isInMenu = False
                         return Representations.gameStates["ON_INSTRUCTIONS"]
-                    else:
+                    else: #If not of this happens, we set the texts and images of the start menu screen.
                         gameCanvas.fill((0, 0, 0))
                         gameCanvas.blit(self.backgroundImage, (0, 0))
 
@@ -47,9 +49,9 @@ class Start_Menu(Menu.Menu):
                         gameCanvas.blit(titleSurf, titleRect)
 
                         pygame.display.update()
-                        clock.tick(60)
+                        clock.tick(30)
 
-                elif event.type != KEYDOWN:
+                elif event.type != KEYDOWN: # For a bug free gaming experience, it was necessary to repeat the upper code block.
                     gameCanvas.fill((0, 0, 0))
                     gameCanvas.blit(self.backgroundImage, (0, 0))
 

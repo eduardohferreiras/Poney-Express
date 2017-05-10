@@ -6,6 +6,7 @@ from pygame.locals import *
 
 class Game_Over_Menu(Menu.Menu):
     def execute_menu(self):
+        #First, we update change the background image and the music.
         self.set_background_image("src/Assets/Images/Atomic Bomb.jpg")
         self.play_music("src/Assets/Sounds/Explosion.wav")
         gameCanvas = pygame.display.get_surface()
@@ -14,15 +15,15 @@ class Game_Over_Menu(Menu.Menu):
 
         while self.isInMenu:
             for event in pygame.event.get():
-                if event.type == pygame.QUIT:
+                if event.type == pygame.QUIT:# if the current event is to quit the game, then we quit the loop and return the correct gameState
                     self.isInMenu = False
                     return Representations.gameStates["GAME_OVER"]
                 elif event.type == KEYDOWN:
-                    if event.key == K_ESCAPE:
+                    if event.key == K_ESCAPE:# if the user press Space, the game closes.
                         pygame.quit()
                         quit()
                         return Representations.gameStates["GAME_OVER"]
-            # Loop Logic
+            # Here, we print the texts and update the screen.
             gameCanvas.fill((0, 0, 0))
             gameCanvas.blit(self.backgroundImage, (0, 0))
 

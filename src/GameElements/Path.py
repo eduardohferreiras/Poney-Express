@@ -57,7 +57,6 @@ class Path:
         gold = pygame.image.load("src/Assets/Images/Gold_Final.png")
         bomb = pygame.image.load("src/Assets/Images/Bombs_Final.png")
         index = 2 ** (self.numberOfLevels - 1)
-        print(index)
         firstX = self.forkTree[index].xStart + 300
         firstY = 0.1 * self.gameDisplay.get_height() - 100
         # print("xPos = {0}; yPos = {1}".format(firstX, firstY))

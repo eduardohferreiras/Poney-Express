@@ -7,6 +7,7 @@ from ..GameElements import Player
 
 pygame.init()
 
+#This class is responsible for activating the functionality related to the gameplay
 class Level():
     def __init__(self):
         self.isPlaying = True
@@ -32,6 +33,7 @@ class Level():
         pygame.mixer.music.load(file)
         pygame.mixer.music.play(-1, 0)
 
+    #This is the main function of the class, and is responsible for controlling the flow that the gameplay will show
     def execute_level(self):
 
         self.set_background_image('src/Assets/Images/Phase_1.jpg')
@@ -45,13 +47,12 @@ class Level():
         while self.isPlaying:
 
             if player.pathConcluded():
-                if player.didWin():
+                if player.didWin(): #The player will move on to the next level
                     self.difficulty = self.difficulty + 1
                     return Representations.gameStates["GOING_TO_NEXT_LEVEL"]
-                elif not player.didWin():
+                elif not player.didWin(): #The player will be moved to the game over menu
                     return Representations.gameStates["GAME_OVER"]
             elif not player.pathConcluded():
-                #Ver se clicou, dar step, atualizar tudo, dar display.update(), blit?.
                 for event in pygame.event.get():
                     if event.type == pygame.QUIT:
                         self.isPlaying = False
@@ -61,13 +62,13 @@ class Level():
                             pygame.quit()
                             quit()
                             return Representations.gameStates["SHUTTING DOWN"]
-                        elif event.key == K_SPACE:
+                        elif event.key == K_SPACE: #Checks if user has clicked then toggles
                             player.toggle()
                 player.step()
                 gameCanvas.blit(self.backgroundImage, (0, 0))
                 path.plotItems()
                 self.draw_level_dificulty()
-                player.draw(counter)
+                player.draw(counter) #Counter is sent to draw() in order to aid in the selection of the player Sprite image
                 path.plotPath()
                 pygame.display.update()
                 clock.tick(30)

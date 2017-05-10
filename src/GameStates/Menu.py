@@ -9,7 +9,7 @@ class Menu():
 
     def play_music(self, file):
         pygame.mixer.music.load(file)
-        pygame.mixer.music.play(-1, 0)
+        pygame.mixer.music.play()
 
     def text_objects(self, text, font, RGBcolor):
         textSurface = font.render(text, True, RGBcolor)

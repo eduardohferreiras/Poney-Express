@@ -1,9 +1,10 @@
-from GameElements import Path
-import pygame
-import Representations
 import math
 
-playerColor = (132, 3, 20)
+import pygame
+
+from src import Representations
+
+playerColor = (255, 0, 0)
 display_width = 800
 display_height = 600
 
@@ -20,7 +21,8 @@ class Player:
 
     def draw(self):
     # plots the player in the display
-        pygame.draw.circle(self.gameSurface, playerColor, (self.xPos, self.yPos), playerRadius)
+        self.playerPos= (self.xPos,self.yPos)
+        pygame.draw.rect(self.gameSurface,playerColor,pygame.Rect(self.xPos-25,self.yPos-25,50,50))
 
     def step(self):
     # player is one step closer to the end of the game
@@ -52,7 +54,7 @@ class Player:
             self.path.forkTree[i].toggle()
 
     def pathConcluded(self):
-        pass
+        return False
 
     def didWin(self):
         pass

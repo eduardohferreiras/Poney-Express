@@ -1,5 +1,9 @@
-import pygame, Representations
-from GameElements import Path, Player
+import pygame
+from pygame.locals import *
+
+from src import Representations
+from src.GameElements import Path
+from ..GameElements import Player
 
 pygame.init()
 
@@ -19,24 +23,17 @@ class Level():
 
     def execute_level(self):
 
-        self.set_background_image('Assets/Images/Phase_1.jpg')
+        self.set_background_image('src/Assets/Images/Phase_1.jpg')
         path = Path.Path(self.difficulty)
         player = Player.Player(path)
         gameCanvas = pygame.display.get_surface()
 
         clock = pygame.time.Clock()
+
         while self.isPlaying:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    self.isPlaying = False
-                    return Representations.gameStates["SHUTTING DOWN"]
-                elif event.type == KEYDOWN:
-                    if event.key == K_ESCAPE:
-                        pygame.quit()
-                        quit()
-                        return Representations.gameStates["SHUTTING DOWN"]
 
             if player.pathConcluded():
+                print("1")
                 if player.didWin():
                     self.difficulty = self.difficulty + 1
                     return Representations.gameStates["GOING_TO_NEXT_LEVEL"]
@@ -45,8 +42,16 @@ class Level():
             elif not player.pathConcluded():
                 #Ver se clicou, dar step, atualizar tudo, dar display.update(), blit?.
                 for event in pygame.event.get():
-                    if event.type == pygame.MOUSEBUTTONUP
-                        player.toggle()
+                    if event.type == pygame.QUIT:
+                        self.isPlaying = False
+                        return Representations.gameStates["SHUTTING DOWN"]
+                    elif event.type == KEYDOWN:
+                        if event.key == K_ESCAPE:
+                            pygame.quit()
+                            quit()
+                            return Representations.gameStates["SHUTTING DOWN"]
+                        elif event.key == K_SPACE:
+                            player.toggle()
 
                 player.step()
                 gameCanvas.blit(self.backgroundImage, (0,0))

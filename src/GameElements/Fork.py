@@ -1,6 +1,9 @@
-import pygame, Representations, random
+import pygame
 
-class Fork_Alternative:
+from src import Representations
+
+
+class Fork:
 
     def __init__(self, xStart, yStart, forkLength, forkHeight, forkState):
         self.xStart = xStart

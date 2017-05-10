@@ -29,7 +29,7 @@ class Level():
         gameCanvas = pygame.display.get_surface()
 
         clock = pygame.time.Clock()
-
+        counter = 0
         while self.isPlaying:
 
             if player.pathConcluded():
@@ -53,7 +53,9 @@ class Level():
                             player.toggle()
                 player.step()
                 gameCanvas.blit(self.backgroundImage, (0,0))
-                player.draw()
+                player.draw(counter)
                 path.plotPath()
                 pygame.display.update()
                 clock.tick(30)
+
+                counter +=1

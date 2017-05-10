@@ -15,11 +15,17 @@ class Player:
         self.path = path
         self.xPos = Representations.xInitialPos
         self.yPos = self.gameSurface.get_height() / 2
+        self.cowboy1 = pygame.image.load("src/Assets/Images/CowboySprites/cowboy_1.png")
+        self.cowboy2 = pygame.image.load("src/Assets/Images/CowboySprites/cowboy_2.png")
 
-    def draw(self):
+    def draw(self,counter):
     # plots the player in the display
         self.playerPos= (self.xPos,self.yPos)
-        pygame.draw.rect(self.gameSurface,playerColor,pygame.Rect(self.xPos-25,self.yPos-25,50,50))
+        decade = round(counter/10.0)
+        if decade%2 == 0:
+            self.gameSurface.blit(self.cowboy1, (self.xPos,self.yPos -60))
+        else:
+            self.gameSurface.blit(self.cowboy2, (self.xPos, self.yPos -60 ))
 
     def step(self):
     # player is one step closer to the end of the game
@@ -68,12 +74,12 @@ class Player:
     def didWin(self):
         if self.pathConcluded() == False:
             pass
-        else:
+        elif self.pathConcluded() == True:
             levelHeight = 0.8 * self.gameSurface.get_height() / self.path.numberOfLevels
             yTarget = self.gameSurface.get_height() / 2
             if self.path.numberOfExits%2 == 0:
                 yTarget += ((self.path.rightExit - (self.path.numberOfExits/2)) * levelHeight) + (levelHeight/2)
-            else:
+            elif self.path.numberOfExits%2 == 1:
                 yTarget += (self.path.rightExit - math.floor(self.path.numberOfExits/2)) * levelHeight
 
             if (self.yPos < yTarget + (levelHeight/2)) and (self.yPos > yTarget - (levelHeight/2)):

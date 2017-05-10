@@ -30,7 +30,7 @@ class Fork:
             self.forkState = Representations.forkState["UP"]
             self.xEnd = self.xStart + self.forkLength
             self.yEnd = self.yStart + (self.forkHeight / 2)
-        else:
+        elif self.forkState == Representations.forkState["UP"]:
             self.forkState = Representations.forkState["DOWN"]
             self.xEnd = self.xStart + self.forkLength
             self.yEnd = self.yStart - (self.forkHeight / 2)

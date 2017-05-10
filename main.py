@@ -27,7 +27,7 @@ while not globalGameExit:
    elif currentGameState == Representations.gameStates["PLAYING"]:
        currentGameState = currentLevel.execute_level()
    elif currentGameState == Representations.gameStates["GOING_TO_NEXT_LEVEL"]:
-       currentGameState = currentLevel.execute_level()
+           currentGameState = currentLevel.execute_level()
    elif currentGameState == Representations.gameStates["GAME_OVER"]:
        currentGameState = gameOverMenu.execute_menu()
    elif currentGameState == Representations.gameStates["ON_INSTRUCTIONS"]:

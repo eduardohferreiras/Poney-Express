@@ -10,7 +10,7 @@ pygame.init()
 class Level():
     def __init__(self):
         self.isPlaying = True
-        self.difficulty = 2
+        self.difficulty = 1
         self.path = None
         self.player = None
 
@@ -36,8 +36,9 @@ class Level():
 
         self.set_background_image('src/Assets/Images/Phase_1.jpg')
         path = Path.Path(self.difficulty)
-        player = Player.Player(path)
         gameCanvas = pygame.display.get_surface()
+        pygame.display.update()
+        player = Player.Player(path)
 
         clock = pygame.time.Clock()
         counter = 0
@@ -63,7 +64,8 @@ class Level():
                         elif event.key == K_SPACE:
                             player.toggle()
                 player.step()
-                gameCanvas.blit(self.backgroundImage, (0,0))
+                gameCanvas.blit(self.backgroundImage, (0, 0))
+                path.plotItems()
                 self.draw_level_dificulty()
                 player.draw(counter)
                 path.plotPath()

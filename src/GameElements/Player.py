@@ -60,7 +60,8 @@ class Player:
             firstFork = 2 ** level
             if level < self.path.numberOfLevels:
                 for i in range(firstFork, 2 * firstFork):
-                    self.path.forkTree[i].toggle()
+                    if i < len(self.path.forkTree):
+                        self.path.forkTree[i].toggle()
 
     def pathConcluded(self):
         if self.xPos >= Representations.xInitialPos + 0.7 * self.gameSurface.get_width() - (4 * stepSize):

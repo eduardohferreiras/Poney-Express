@@ -53,12 +53,13 @@ class Path:
         for fork in self.forkTree:
             fork.draw()
 
-        forkHeight = (0.8 * self.gameDisplay.get_height()) / self.numberOfLevels
+    def plotItems(self):
+        forkHeight = (0.7* self.gameDisplay.get_height()) / self.numberOfLevels
         gold = pygame.image.load("src/Assets/Images/Gold_Final.png")
         bomb = pygame.image.load("src/Assets/Images/Bombs_Final.png")
         index = 2 ** (self.numberOfLevels - 1)
-        firstX = self.forkTree[index].xStart + 300
-        firstY = 0.1 * self.gameDisplay.get_height() - 100
+        firstX = self.forkTree[index].xEnd
+        firstY = self.gameDisplay.get_height()*0.1
         # print("xPos = {0}; yPos = {1}".format(firstX, firstY))
         # print("height = {0}".format(forkHeight))
         for i in range(self.numberOfExits):

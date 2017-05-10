@@ -1,5 +1,5 @@
 import random
-
+import math
 import pygame
 
 from src import Representations
@@ -56,3 +56,15 @@ class Path:
         # Plots every fork of the path
         for fork in self.forkTree:
             fork.draw()
+
+        constSize = 175
+        gold = pygame.image.load("src/Assets/Images/Gold_Final.png")
+        bomb = pygame.image.load("src/Assets/Images/Bombs_Final.png")
+        index = 2 ** (self.numberOfLevels - 1)
+        firstX = self.forkTree[index].xStart + 300
+        firstY = self.forkTree[index].yStart - 400
+        for i in range(self.numberOfExits):
+            if i == self.rightExit:
+                gameDisplay.blit(gold, (firstX, firstY + i*constSize))
+            else:
+                gameDisplay.blit(bomb, (firstX, firstY + i*constSize))

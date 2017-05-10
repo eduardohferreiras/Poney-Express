@@ -62,6 +62,6 @@ class Path:
         firstY = self.forkTree[index].yStart - 400
         for i in range(self.numberOfExits):
             if i == self.rightExit:
-                gameDisplay.blit(gold, (firstX, firstY + i*constSize))
+                self.gameDisplay.blit(gold, (firstX, firstY + i*constSize))
             else:
-                gameDisplay.blit(bomb, (firstX, firstY + i*constSize))
+                self.gameDisplay.blit(bomb, (firstX, firstY + i*constSize))
